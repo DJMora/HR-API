@@ -1,12 +1,14 @@
 #!flask/bin/python
 from flask import Flask, jsonify
 from flask.ext.restful import Api, Resource, reqparse
+from flask.ext.cors import CORS
 from entities.Employee import Employee, EmployeeJsonEncoder
 from manager.HRManager import HRManager
 
 
 app = Flask(__name__)
 api = Api(app)
+cors = CORS(app)
 parser = reqparse.RequestParser()
 parser.add_argument('name',type=str)
 parser.add_argument('position',type=str)
