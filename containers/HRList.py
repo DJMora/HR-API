@@ -3,7 +3,7 @@ from entities.Employee import Employee
 
 class HRList:
     def __init__(self):
-        self.employees = [{'Leonardo Chen': 'Java Developer'}]
+        self.employees = [Employee('Leonardo Chen', 'Java developer')]
 
 
     def addEmployee(self, employee=Employee()):

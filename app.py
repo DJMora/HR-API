@@ -1,7 +1,7 @@
 #!flask/bin/python
-from flask import Flask
+from flask import Flask, jsonify
 from flask.ext.restful import Api, Resource, reqparse
-from entities.Employee import Employee
+from entities.Employee import Employee, EmployeeJsonEncoder
 from manager.HRManager import HRManager
 
 
@@ -18,7 +18,7 @@ class HRListApi(Resource):
 
 
     def get(self):
-        return {'hr': self.manager.getAllEmployees()}
+        return jsonify(employees=self.manager.getAllEmployees())
 
 
     def post(self):
@@ -58,7 +58,7 @@ class HRApi(Resource):
 
 api.add_resource(HRApi, '/hr/<id>', endpoint = 'employee')
 api.add_resource(HRListApi, '/hr', endpoint = 'employees')
-
+app.json_encoder = EmployeeJsonEncoder
 
 if __name__ == '__main__':
     app.run(debug=True)
