@@ -37,24 +37,21 @@ class HRApi(Resource):
         self.manager = HRManager()
 
 
-    def get(self, name):
-        employee = self.manager.searchEmployee(name)
-        return {'employee': employee}
+    def get(self, id):
+        return jsonify(employee=self.manager.searchEmployee(id))
 
 
-
-    def put(self, name):
+    def put(self, id):
         args = parser.parse_args()
-        employee = Employee()
+        employee = self.manager.searchEmployee(id)
         employee.name = args['name']
         employee.position = args['position']
-        employee = self.manager.searchEmployee(name)
-        msg = self.manager.updateEmployee(employee)
+        msg = self.manager.updateEmployee(id, employee)
         return {'response': msg}
 
 
-    def delete(self, position):
-        msg = self.manager.deleteEmployee(position)
+    def delete(self, id):
+        msg = self.manager.deleteEmployee(id)
         return {'response': msg}
 
 

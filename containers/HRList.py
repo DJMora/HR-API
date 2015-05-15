@@ -1,9 +1,11 @@
 from entities.Employee import Employee
 #Container class for Employees
 
+hr = [Employee('Leonardo Chen', 'Java developer')]
+
 class HRList:
     def __init__(self):
-        self.employees = [Employee('Leonardo Chen', 'Java developer')]
+        self.employees = hr
 
 
     def addEmployee(self, employee=Employee()):
@@ -14,14 +16,17 @@ class HRList:
     def deleteEmployee(self , position='PR'):
         for employee in self.employees:
             if employee.position == position:
+                name = employee.name
                 self.employees.remove(employee)
-                return 'Employee has been deleted'
+                return name + ' has been deleted'
 
 
-    def updateEmployee(self, updatedEmployee=Employee()):
+    def updateEmployee(self, name='Cindy', updatedEmployee=Employee()):
         for employee in self.employees:
-            if employee.name == updatedEmployee.name:
+            if employee.name == name:
+                print(employee.name + " " + employee.position)
                 employee = updatedEmployee
+                print(updatedEmployee.name + " " + updatedEmployee.position)
                 return 'Employee has been updated'
 
 

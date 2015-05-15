@@ -11,11 +11,11 @@ class HRManager:
 
 
     def deleteEmployee(self, position):
-        self.employees.deleteEmployee(position)
+        return self.employees.deleteEmployee(position)
 
 
-    def updateEmployee(self, employee):
-        self.employees.update(employee)
+    def updateEmployee(self, name , employee):
+        return self.employees.updateEmployee(name , employee)
 
 
     def searchEmployee(self, name):
